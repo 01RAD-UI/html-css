@@ -19,30 +19,33 @@
             color: #333;
         }
 
-        /* Adicionando estilo para o botão do menu aumentado e piscante */
+        #image-container {
+            position: relative;
+        }
+
         #menu {
             background-color: rgba(255, 165, 0, 0.8);
-            padding: 15px 30px;
-            font-size: 24px;
+            padding: 8px;
+            font-size: 16px;
             text-align: center;
             color: #fff;
-            border-radius: 10px;
+            border-radius: 50%;
             position: absolute;
-            top: 75%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             cursor: pointer;
             animation: blink 1s infinite;
+            z-index: 2;
         }
 
-        /* Adicionando estilo para o nome da pizzaria */
         #pizzaria-name-container {
             position: absolute;
-            top: 10%;
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            overflow: hidden; /* Oculta os overflow para evitar problemas com a animação */
+            overflow: hidden;
         }
 
         #pizzaria-name {
@@ -51,13 +54,11 @@
             color: #FFD700;
             letter-spacing: 4px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            display: inline-block;
-            white-space: nowrap; /* Impede quebras de linha durante a animação */
-            transform-origin: left center; /* Define o ponto de origem da transformação */
-            animation: revealText 2s forwards; /* Utiliza a animação 'revealText' por 2 segundos */
+            white-space: nowrap;
+            transform-origin: left center;
+            animation: revealText 2s forwards;
         }
 
-        /* Define a animação de revelação do texto */
         @keyframes revealText {
             0% {
                 transform: scaleX(0);
@@ -67,7 +68,11 @@
             }
         }
 
-        /* Adicionando estilo para a imagem da parallax */
+        .parallax {
+            position: relative;
+            overflow: hidden;
+        }
+
         .parallax img {
             width: 100%;
             height: auto;
@@ -75,18 +80,6 @@
             object-position: top center;
         }
 
-        /* Adicionando estilo para o endereço */
-        #endereco {
-            position: absolute;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 18px;
-            color: #333;
-            text-align: center;
-        }
-
-        /* Adicionando estilo para o rodapé */
         footer {
             background-color: #333;
             color: #fff;
@@ -97,19 +90,17 @@
             bottom: 0;
         }
 
-        /* Adicionando estilo para o carrossel */
         .slick-carousel {
             position: absolute;
-            top: 20%;
+            top: 10%;
             left: 50%;
             transform: translateX(-50%);
             width: 80%;
-            margin-top: 20px;
-            background-image: url('depoimento-background.jpg');
-            background-size: cover;
+            background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
             color: #fff;
+            z-index: 2;
         }
 
         .slick-slide {
@@ -132,6 +123,9 @@
             border: 1px solid #fff;
             border-radius: 50%;
             padding: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .slick-prev {
@@ -142,7 +136,6 @@
             right: -20px;
         }
 
-        /* Adicionando animação de piscar */
         @keyframes blink {
             0%, 100% {
                 color: rgba(255, 165, 0, 0.8);
@@ -153,7 +146,6 @@
             }
         }
 
-        /* Adicionando estilo para o menu de navegação */
         nav {
             text-align: center;
             background-color: #333;
@@ -178,28 +170,27 @@
             font-weight: bold;
         }
 
-        /* Adicionando estilo para o ícone do WhatsApp */
         #whatsapp-icon,
         #instagram-icon {
             position: fixed;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
-            animation: shakeIcon 0.5s infinite; /* Adicionando a animação de tremer */
+            animation: shakeIcon 0.5s infinite;
+            z-index: 2;
         }
 
         #whatsapp-icon {
             top: 20px;
-            right: 20px;
+            right: 10px;
             color: #25d366;
         }
 
         #instagram-icon {
             top: 20px;
-            left: 20px;
+            left: 10px;
             color: #bc2a8d;
         }
 
-        /* Adicionando estilo para os indicadores do carrossel */
         .slick-dots {
             position: absolute;
             bottom: 3px;
@@ -233,14 +224,22 @@
             background: #FFD700;
         }
 
-        /* Adicionando regras de estilo para tornar o layout mais responsivo */
+        #map-container {
+            width: 100%;
+            height: 150px;
+            margin-top: 20px;
+        }
+
         @media only screen and (max-width: 768px) {
-            /* Modifique conforme necessário para uma experiência responsiva */
             #pizzaria-name {
                 font-size: 36px;
             }
             .slick-carousel {
-                width: 90%;
+                width: 50%;
+            }
+            #menu {
+                font-size: 14px;
+                padding: 6px;
             }
         }
     </style>
@@ -249,37 +248,39 @@
 <body>
     <div id="image-container">
 
-        <!-- Carrossel de depoimentos -->
-        <div class="slick-carousel">
-            <div>
-                <img src="7a595696-17dc-4c70-a0cf-afc102033ac5.jpg" alt="Depoimento 1">
-                <p>Fiquei impressionado com a qualidade e sabor das pizzas da Pizzaria Urbana! Recomendo a todos.</p>
-                <p>Lavignia meirelles</p>
-            </div>
-            <div>
-                <img src="22810a17-75fc-4e90-80e3-0cea522fa0f5.jpg" alt="Depoimento 2">
-                <p>Simplesmente as melhores pizzas da região! Ingredientes frescos e atendimento excepcional.</p>
-                <p>Daniel Oliveira</p>
-            </div>
-            <div>
-                <img src="betania.jpg" alt="Depoimento 3">
-                <p>Variedade incrível de sabores, ambiente agradável e pizzas de dar água na boca. Uma experiência gastronômica única!</p>
-                <p>Dominique Leclerc</p>
-            </div>
-            <div>
-                <img src="d7dc81ce-7925-4139-a776-fd24edecc3b5.jpg" alt="Depoimento 4">
-                <p>Atendimento rápido, entrega no prazo e pizzas incríveis. Sem dúvida, voltarei a pedir!</p>
-                <p>j. Mourão Gerdal</p>
-            </div>
-            <div>
-                <img src="edd344e4-06d4-4eaa-bd10-f4d12927ada8.jpg" alt="Depoimento 1">
-                <p>Fiquei impressionado com a qualidade e sabor das pizzas da Pizzaria Urbana! Recomendo a todos.</p>
-                <p>Eléonor França</p>
+        <!-- Adicionando o ícone do Menu com animação dentro da foto -->
+        <div class="parallax">
+            <img src="pexels-ruslan-khmelevsky-6876067.jpg" alt="Imagem 2">
+
+            <!-- Carrossel de depoimentos -->
+            <div class="slick-carousel">
+                <div>
+                    <img src="7a595696-17dc-4c70-a0cf-afc102033ac5.jpg" alt="Depoimento 1">
+                    <p>Fiquei impressionado com a qualidade e sabor das pizzas da Pizzaria Urbana! Recomendo a todos.</p>
+                    <p>Lavignia meirelles</p>
+                </div>
+                <div>
+                    <img src="22810a17-75fc-4e90-80e3-0cea522fa0f5.jpg" alt="Depoimento 2">
+                    <p>Simplesmente as melhores pizzas da região! Ingredientes frescos e atendimento excepcional.</p>
+                    <p>Daniel Oliveira</p>
+                </div>
+                <div>
+                    <img src="betania.jpg" alt="Depoimento 3">
+                    <p>Variedade incrível de sabores, ambiente agradável e pizzas de dar água na boca. Uma experiência gastronômica única!</p>
+                    <p>Dominique Leclerc</p>
+                </div>
+                <div>
+                    <img src="d7dc81ce-7925-4139-a776-fd24edecc3b5.jpg" alt="Depoimento 4">
+                    <p>Atendimento rápido, entrega no prazo e pizzas incríveis. Sem dúvida, voltarei a pedir!</p>
+                    <p>j. Mourão Gerdal</p>
+                </div>
+                <div>
+                    <img src="edd344e4-06d4-4eaa-bd10-f4d12927ada8.jpg" alt="Depoimento 1">
+                    <p>Fiquei impressionado com a qualidade e sabor das pizzas da Pizzaria Urbana! Recomendo a todos.</p>
+                    <p>Eléonor França</p>
+                </div>
             </div>
         </div>
-
-        <!-- Adicionando botão do menu com animação -->
-        <div id="menu" onclick="location.href='menu.html';">Nosso Menu</div>
 
         <!-- Adicionando o nome da pizzaria com animação -->
         <div id="pizzaria-name-container">
@@ -289,35 +290,36 @@
         <!-- Adicionando o ícone do WhatsApp como um link clicável -->
         <a id="whatsapp-icon" href="https://wa.me/557491226397" target="_blank">
             <i class="fab fa-whatsapp"></i>
-            <span>whatsapp</span>
+            <span>WhatsApp</span>
         </a>
 
         <!-- Adicionando o ícone do Instagram como um link clicável -->
         <a id="instagram-icon" href="https://www.instagram.com/oliveira.rad/?hl=en" target="_blank">
             <i class="fab fa-instagram"></i>
-            <span>instagram</span>
+            <span>Instagram</span>
         </a>
 
-        <div class="parallax">
-            <img src="pexels-ruslan-khmelevsky-6876067.jpg" alt="Imagem 2">
+        <!-- Botão de Menu -->
+        <div id="menu">
+            <a href="#menu-section"><i class="fas fa-bars">menu</i></a>
         </div>
 
         <!-- Rodapé -->
         <footer>
             &copy; 2024 Pizzaria Urbana fictícia. Todos os direitos reservados. | <a href="#contato">Copy</a>
         </footer>
-    </div>
 
-    <!-- Incorporando o mapa com o endereço fictício -->
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3094.6877562488046!2d-40.50174378462291!3d-9.413529411425768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x76a53bea35a61f9%3A0x823bfbaf2a3d6d50!2sAvenida%20Alfa%2C%20Dom%20Jos%C3%A9%20Rodrigues%2C%20Juazeiro%20-%20BA!5e0!3m2!1sen!2sbr!4v1643192876062!5m2!1sen!2sbr" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <!-- Mapa incorporado com tamanho reduzido -->
+        <div id="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3094.6877562488046!2d-40.50174378462291!3d-9.413529411425768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x76a53bea35a61f9%3A0x823bfbaf2a3d6d50!2sAvenida%20Alfa%2C%20Dom%20Jos%C3%A9%20Rodrigues%2C%20Juazeiro%20-%20BA!5e0!3m2!1sen!2sbr!4v1643192876062!5m2!1sen!2sbr" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
 
     <!-- Seu script JavaScript - mantido como está -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-        // Seu script JavaScript
         $(document).ready(function () {
-            // Inicialize o carrossel de depoimentos
             $('.slick-carousel').slick({
                 dots: true,
                 arrows: true,
